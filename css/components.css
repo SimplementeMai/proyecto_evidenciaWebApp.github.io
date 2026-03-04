@@ -1,0 +1,258 @@
+/* ============================================================
+   COMPONENTES UI - BASE
+   ============================================================ */
+
+/* SPLASH SCREEN */
+.splash-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--color-bg-darker);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    transition: opacity 1s ease-out, visibility 1s ease-out;
+}
+
+.splash-logo {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--color-primary);
+    box-shadow: 0 0 30px var(--color-primary);
+    animation: splashPulse 2s ease-in-out infinite;
+}
+
+.splash-container.fade-out {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+@keyframes splashPulse {
+    0% { transform: scale(1); box-shadow: 0 0 20px var(--color-primary); }
+    50% { transform: scale(1.05); box-shadow: 0 0 40px var(--color-primary); }
+    100% { transform: scale(1); box-shadow: 0 0 20px var(--color-primary); }
+}
+
+/* BOTONES GENERALES */
+button {
+    font-family: var(--font-family-main);
+    font-size: var(--font-size-md);
+    border: none;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.btn-primary {
+    background-color: var(--color-primary);
+    color: white;
+    padding: var(--spacing-md) var(--spacing-lg);
+    margin-right: var(--spacing-sm);
+    margin-bottom: var(--spacing-sm);
+}
+
+.btn-primary:hover {
+    background-color: var(--color-primary-light);
+    box-shadow: 0 2px 8px rgba(138, 43, 226, 0.2);
+    transform: translateY(-1px);
+}
+
+.btn-large {
+    padding: 12px 25px;
+    font-size: var(--font-size-lg);
+}
+
+.btn-secondary {
+    background-color: #3f3f5a;
+    color: var(--color-text-primary);
+    padding: var(--spacing-md) var(--spacing-lg);
+    border: 1px solid var(--color-border);
+    margin-right: var(--spacing-sm);
+    margin-bottom: var(--spacing-sm);
+}
+
+.btn-secondary:hover {
+    background-color: var(--color-primary);
+    color: white;
+    transform: translateY(-1px);
+}
+
+.btn-small {
+    background-color: var(--color-primary);
+    color: white;
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-size: var(--font-size-sm);
+}
+
+.btn-danger {
+    background-color: var(--color-danger);
+    color: white;
+    padding: var(--spacing-md) var(--spacing-lg);
+}
+
+/* INPUTS */
+.number-input,
+.textarea-input {
+    width: calc(100% - 14px);
+    padding: var(--spacing-md) var(--spacing-lg);
+    margin-bottom: var(--spacing-md);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background-color: var(--color-bg-input);
+    color: var(--color-text-primary);
+    box-sizing: border-box;
+    transition: all var(--transition-fast);
+    font-size: var(--font-size-md);
+}
+
+.number-input:focus,
+.textarea-input:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    background-color: rgba(74, 74, 101, 0.6);
+}
+
+.select-input {
+    width: 100%;
+    padding: var(--spacing-md);
+    background-color: var(--color-bg-input);
+    color: var(--color-text-primary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    font-family: var(--font-family-main);
+    font-size: var(--font-size-sm);
+}
+
+input[type="range"] {
+    width: 100%;
+    margin-top: var(--spacing-sm);
+    accent-color: var(--color-primary);
+}
+
+/* GRUPOS Y SECCIONES */
+.input-group {
+    margin-bottom: var(--spacing-lg);
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-text-primary);
+    font-weight: 600;
+    font-size: var(--font-size-sm);
+    text-transform: uppercase;
+    opacity: 0.9;
+}
+
+.module-section {
+    background-color: rgba(44, 44, 71, 0.85); /* Mayor opacidad */
+    backdrop-filter: blur(12px); /* Efecto de cristal esmerilado */
+    -webkit-backdrop-filter: blur(12px);
+    padding: var(--spacing-3xl);
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--spacing-3xl);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all var(--transition-fast);
+    position: relative;
+}
+
+.module-section h2 {
+    color: var(--color-primary);
+    border-bottom: 3px solid var(--color-accent-warm);
+    padding-bottom: var(--spacing-lg);
+    margin-top: 0;
+    margin-bottom: var(--spacing-2xl);
+    font-size: var(--font-size-xl);
+    font-weight: 700;
+    font-family: var(--font-family-title);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Sombra para legibilidad */
+}
+
+.module-controls {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.button-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+    margin-top: var(--spacing-md);
+}
+
+/* TITULOS */
+h1.main-page-title {
+    text-align: center;
+    font-family: var(--font-family-title);
+    color: var(--color-primary);
+    font-size: 5em;
+    text-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
+    letter-spacing: 2px;
+    line-height: var(--line-height-tight);
+    margin: 0;
+    font-weight: 800;
+}
+
+h2.main-subtitle {
+    font-size: var(--font-size-xl);
+    color: var(--color-accent-warm);
+    font-family: var(--font-family-title);
+    font-weight: 500;
+}
+
+@media (max-width: 768px) {
+    .module-section {
+        padding: var(--spacing-lg);
+        margin-bottom: var(--spacing-xl);
+    }
+
+    .module-section h2 {
+        font-size: 1.4em;
+        margin-bottom: var(--spacing-lg);
+    }
+
+    .btn-large {
+        width: 100%;
+        font-size: 1.1em;
+    }
+
+    .button-group {
+        flex-direction: column;
+    }
+
+    .button-group button {
+        width: 100%;
+        margin-right: 0;
+    }
+
+    /* Puppet optimization for mobile */
+    .puppet-character {
+        width: 80px !important; /* Smaller puppet */
+        bottom: 10px !important;
+        right: 10px !important;
+    }
+
+    #puppet-comm-hub {
+        bottom: 10px !important;
+        right: 10px !important;
+        gap: 8px !important;
+    }
+
+    .puppet-phone {
+        width: 40px !important;
+        height: 70px !important;
+    }
+
+    .speech-bubble {
+        font-size: 0.8em !important;
+        max-width: 150px !important;
+    }
+}

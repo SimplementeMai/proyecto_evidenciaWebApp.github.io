@@ -1,0 +1,439 @@
+/* ============================================================
+   UTILIDADES Y CLASES AUXILIARES
+   ============================================================
+   Clases reutilizables, efectos visuales y mejoras de accesibilidad
+   ============================================================ */
+
+/* ========== VISIBILIDAD ========== */
+.hidden {
+    display: none !important;
+}
+
+.visible {
+    display: block !important;
+}
+
+.invisible {
+    visibility: hidden;
+}
+
+/* ========== ESTADOS ========== */
+.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.active {
+    background-color: var(--color-primary) !important;
+    color: white !important;
+}
+
+.inactive {
+    opacity: 0.6;
+}
+
+/* ========== TEXTOS ========== */
+.text-center {
+    text-align: center;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.text-muted {
+    color: var(--color-text-secondary);
+}
+
+.text-primary {
+    color: var(--color-primary);
+}
+
+.text-success {
+    color: var(--color-success);
+}
+
+.text-danger {
+    color: var(--color-danger);
+}
+
+.text-warning {
+    color: var(--color-warning);
+}
+
+.text-bold {
+    font-weight: bold;
+}
+
+.text-italic {
+    font-style: italic;
+}
+
+.text-uppercase {
+    text-transform: uppercase;
+}
+
+.text-lowercase {
+    text-transform: lowercase;
+}
+
+.text-capitalize {
+    text-transform: capitalize;
+}
+
+/* ========== ESPACIADO - MARGEN ========== */
+.m-0 { margin: 0; }
+.m-xs { margin: var(--spacing-xs); }
+.m-sm { margin: var(--spacing-sm); }
+.m-md { margin: var(--spacing-md); }
+.m-lg { margin: var(--spacing-lg); }
+.m-xl { margin: var(--spacing-xl); }
+
+.mt-0 { margin-top: 0; }
+.mt-xs { margin-top: var(--spacing-xs); }
+.mt-sm { margin-top: var(--spacing-sm); }
+.mt-md { margin-top: var(--spacing-md); }
+.mt-lg { margin-top: var(--spacing-lg); }
+.mt-xl { margin-top: var(--spacing-xl); }
+
+.mb-0 { margin-bottom: 0; }
+.mb-xs { margin-bottom: var(--spacing-xs); }
+.mb-sm { margin-bottom: var(--spacing-sm); }
+.mb-md { margin-bottom: var(--spacing-md); }
+.mb-lg { margin-bottom: var(--spacing-lg); }
+.mb-xl { margin-bottom: var(--spacing-xl); }
+
+.mx-auto {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ========== ESPACIADO - PADDING ========== */
+.p-0 { padding: 0; }
+.p-xs { padding: var(--spacing-xs); }
+.p-sm { padding: var(--spacing-sm); }
+.p-md { padding: var(--spacing-md); }
+.p-lg { padding: var(--spacing-lg); }
+.p-xl { padding: var(--spacing-xl); }
+
+/* ========== FONDOS ========== */
+.bg-primary {
+    background-color: var(--color-primary);
+}
+
+.bg-secondary {
+    background-color: var(--color-bg-card);
+}
+
+.bg-dark {
+    background-color: var(--color-bg-dark);
+}
+
+.bg-input {
+    background-color: var(--color-bg-input);
+}
+
+/* ========== BORDES ========== */
+.border {
+    border: 1px solid var(--color-border);
+}
+
+.border-top {
+    border-top: 1px solid var(--color-border);
+}
+
+.border-bottom {
+    border-bottom: 1px solid var(--color-border);
+}
+
+.border-left {
+    border-left: 1px solid var(--color-border);
+}
+
+.border-right {
+    border-right: 1px solid var(--color-border);
+}
+
+.border-primary {
+    border: 2px solid var(--color-primary);
+}
+
+/* ========== SOMBRAS ========== */
+.shadow-sm {
+    box-shadow: var(--shadow-sm);
+}
+
+.shadow-md {
+    box-shadow: var(--shadow-md);
+}
+
+.shadow-lg {
+    box-shadow: var(--shadow-lg);
+}
+
+.shadow-glow {
+    box-shadow: var(--shadow-glow);
+}
+
+/* ========== RADIOS ========== */
+.rounded-sm {
+    border-radius: var(--radius-sm);
+}
+
+.rounded-md {
+    border-radius: var(--radius-md);
+}
+
+.rounded-lg {
+    border-radius: var(--radius-lg);
+}
+
+.rounded-full {
+    border-radius: var(--radius-full);
+}
+
+/* ========== CURSORES ========== */
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.cursor-default {
+    cursor: default;
+}
+
+.cursor-text {
+    cursor: text;
+}
+
+.cursor-wait {
+    cursor: wait;
+}
+
+/* ========== EFECTOS DE TRANSICIÓN ========== */
+.transition-fast {
+    transition: all var(--transition-fast);
+}
+
+.transition-normal {
+    transition: all var(--transition-normal);
+}
+
+/* ========== EFECTOS VISUALES ========== */
+.hover-lift:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+}
+
+.hover-glow:hover {
+    box-shadow: 0 0 15px var(--color-primary);
+}
+
+.hover-scale:hover {
+    transform: scale(1.05);
+}
+
+.hover-dim:hover {
+    opacity: 0.8;
+}
+
+.glow {
+    box-shadow: 0 0 20px var(--color-primary), 0 0 30px var(--color-primary);
+}
+
+/* ========== ANIMACIONES ========== */
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+@keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slide-in-left {
+    from { transform: translateX(-20px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slide-in-right {
+    from { transform: translateX(20px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+.animate-pulse {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.animate-fade-in {
+    animation: fade-in 0.3s ease-in-out;
+}
+
+.animate-slide-in-left {
+    animation: slide-in-left 0.3s ease-in-out;
+}
+
+.animate-slide-in-right {
+    animation: slide-in-right 0.3s ease-in-out;
+}
+
+/* Transición fuerte y aguda para efectos especiales */
+.sharp-transition {
+    transition: all 0.2s cubic-bezier(0.19, 1, 0.22, 1) !important;
+    filter: contrast(150%) brightness(120%) hue-rotate(15deg);
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 768px) {
+    /* Ajustes para tablets */
+    .sidebar {
+        width: var(--sidebar-width);
+        z-index: 3000; /* Asegurar que esté por encima de todo */
+    }
+
+    .sidebar-left:hover, .sidebar-right:hover {
+        width: 100%; /* Ocupar todo el ancho al abrir en tablets/móviles para mejor usabilidad */
+        max-width: 250px;
+    }
+    
+    main {
+        padding: var(--spacing-md);
+    }
+    
+    .results-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .puppet-character {
+        display: none !important; /* Ocultar mascota en pantallas pequeñas para evitar obstrucción */
+    }
+
+    h1.main-page-title {
+        font-size: 3.5em;
+    }
+
+    .sponsored-item {
+        min-width: 120px;
+        flex: 1 1 120px;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Ajustes para móviles */
+    body {
+        padding-left: 10px;
+        padding-right: 10px;
+        font-size: 0.95em;
+    }
+    
+    h1.main-page-title {
+        font-size: 2.2em;
+    }
+
+    h2.main-subtitle {
+        font-size: var(--font-size-lg);
+    }
+    
+    main {
+        padding: var(--spacing-xs);
+        border-radius: var(--radius-md);
+    }
+
+    .sponsored-gallery {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .sponsored-item {
+        width: 100%;
+        max-width: 280px;
+    }
+
+    .module-section {
+        padding: var(--spacing-xl) var(--spacing-md);
+    }
+
+    .sidebar-left:hover, .sidebar-right:hover {
+        max-width: 200px;
+    }
+}
+    
+    .button-group {
+        flex-direction: column;
+    }
+    
+    .button-group button {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: var(--spacing-sm);
+    }
+    
+    .charts-grid .chart-wrapper {
+        width: 100%;
+    }
+}
+
+/* ========== ACCESIBILIDAD ========== */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Focus Visible para Navegación por Teclado */
+:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+}
+
+button:focus-visible {
+    outline: 2px solid white;
+    outline-offset: -4px;
+}
+
+/* ========== IMPRENTA ========== */
+@media print {
+    .sidebar,
+    .secret-button,
+    .btn-primary,
+    .btn-secondary {
+        display: none !important;
+    }
+    
+    body {
+        background-color: white;
+        color: black;
+        padding: 0;
+    }
+    
+    main {
+        box-shadow: none;
+        max-width: 100%;
+    }
+}
+
+/* ========== TEMA OSCURO FORZADO ========== */
+@media (prefers-color-scheme: dark) {
+    :root {
+        color-scheme: dark;
+    }
+}
+
+/* ========== TEMA CLARO FORZADO ========== */
+@media (prefers-color-scheme: light) {
+    :root {
+        color-scheme: light;
+    }
+}
+
+/* ========== PEQUEÑO ESPA SCROLL ========== */
+html {
+    scroll-behavior: smooth;
+}

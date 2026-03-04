@@ -1,0 +1,297 @@
+/* ============================================================
+   DINNERBONE & SECRETS
+   ============================================================ */
+
+/* From layout.css - Transformation */
+html.flipped {
+    transform: rotate(180deg);
+    transform-origin: center center;
+    min-height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+html.flipped .sidebar {
+    transform: rotate(180deg);
+}
+
+html.flipped .sidebar-left {
+    left: auto;
+    right: var(--sidebar-hidden);
+    border-right: none;
+    border-left: 1px solid var(--color-border);
+}
+
+html.flipped .sidebar-left:hover {
+    right: var(--sidebar-visible);
+}
+
+html.flipped .sidebar-right {
+    right: auto;
+    left: var(--sidebar-hidden);
+    border-left: none;
+    border-right: 1px solid var(--color-border);
+}
+
+html.flipped .sidebar-right:hover {
+    left: var(--sidebar-visible);
+}
+
+html.flipped .content-wrapper {
+    transform: none;
+}
+
+html.flipped #secret-trigger-btn {
+    transform: rotate(180deg);
+}
+
+html.flipped .puppet-normal {
+    transform: rotate(180deg);
+    right: auto;
+    left: var(--puppet-hidden);
+}
+
+html.flipped .sidebar-right:hover ~ .puppet-normal {
+    left: var(--puppet-visible);
+}
+
+/* From components.css - Modal & Buttons */
+.secret-button {
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    z-index: var(--z-secret-btn);
+    display: none !important;
+    background: var(--color-primary);
+    color: white;
+    border: 2px solid white;
+    border-radius: var(--radius-full);
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    box-shadow: 0 0 15px var(--color-primary);
+    font-weight: bold;
+    font-size: var(--font-size-lg);
+    transition: all var(--transition-fast);
+}
+
+.secret-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px var(--color-primary);
+}
+
+html.flipped .secret-button {
+    display: block !important;
+}
+
+.secret-button-modal {
+    position: absolute !important;
+    top: var(--spacing-2xl);
+    right: var(--spacing-2xl);
+    left: auto;
+    bottom: auto;
+    z-index: 10001;
+    display: none !important;
+    width: 50px;
+    height: 50px;
+    font-size: var(--font-size-2xl);
+    box-shadow: 0 0 20px rgba(138, 43, 226, 0.5);
+    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
+}
+
+.secret-button-modal:hover {
+    transform: scale(1.15) rotate(5deg);
+    box-shadow: 0 0 30px rgba(138, 43, 226, 0.8);
+}
+
+.dinnerbone-modal:not(.hidden) .secret-button-modal {
+    display: block !important;
+}
+
+.dinnerbone-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(135deg, rgba(26, 26, 46, 0.95) 0%, rgba(44, 44, 71, 0.95) 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    backdrop-filter: blur(5px);
+    animation: fadeIn 0.5s ease-in-out;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.dinnerbone-modal.hidden {
+    display: none;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.dinnerbone-modal-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-3xl);
+    transform: scale(1);
+    animation: popIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+    position: relative;
+}
+
+.dinnerbone-puppet-center {
+    width: 400px;
+    height: auto;
+    filter: drop-shadow(0 10px 30px rgba(138, 43, 226, 0.4));
+    transform: rotate(180deg);
+}
+
+.btn-modal-close {
+    background-color: var(--color-accent-warm);
+    color: var(--color-text-primary);
+    padding: var(--spacing-lg) var(--spacing-2xl);
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+    border: 2px solid var(--color-accent-warm-light);
+    transition: all var(--transition-fast);
+}
+
+.btn-modal-close:hover {
+    background-color: var(--color-accent-warm-light);
+    box-shadow: 0 4px 15px rgba(201, 124, 124, 0.3);
+    transform: translateY(-2px);
+}
+
+.btn-modal-close:active {
+    transform: translateY(0);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes popIn {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+/* ============================================================
+   PUPPET SPEECH BUBBLE
+   ============================================================ */
+
+.speech-bubble {
+    position: fixed;
+    bottom: 100px; /* Posición fija respecto a la pantalla */
+    right: 160px; /* Desplazado a la izquierda de la barra lateral */
+    background: white;
+    color: #1a1a2e;
+    padding: 12px 18px;
+    border-radius: 15px;
+    font-size: 0.85em;
+    font-weight: 600;
+    min-width: 160px;
+    max-width: 240px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+    z-index: 10005; /* Por encima de casi todo */
+    pointer-events: none; 
+    animation: bubblePop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    border: 3px solid var(--color-primary);
+}
+
+/* El piquito de la burbuja ajustado a la nueva posición */
+.speech-bubble::after {
+    content: '';
+    position: absolute;
+    bottom: -12px;
+    right: 20px;
+    border-width: 12px 12px 0;
+    border-style: solid;
+    border-color: var(--color-primary) transparent transparent;
+    transform: rotate(-15deg);
+}
+
+.speech-bubble::before {
+    content: '';
+    position: absolute;
+    bottom: -7px;
+    right: 31px;
+    border-width: 9px 9px 0;
+    border-style: solid;
+    border-color: white transparent transparent;
+    z-index: 1;
+}
+
+@keyframes bubblePop {
+    from { transform: translateY(10px) scale(0.8); opacity: 0; }
+    to { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+/* ============================================================
+   PUPPET PHONE
+   ============================================================ */
+
+.puppet-phone {
+    width: 45px;
+    height: 85px;
+    background: #222;
+    border: 3px solid #111;
+    border-radius: 10px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+}
+
+.phone-screen {
+    width: 88%;
+    height: 75%;
+    background: #1a1a2e;
+    margin-top: 8px;
+    border-radius: 4px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.phone-screen::after {
+    content: '📱';
+    font-size: 1.2em;
+    opacity: 0.3;
+}
+
+.phone-speaker {
+    width: 15px;
+    height: 2px;
+    background: #333;
+    position: absolute;
+    top: 4px;
+    border-radius: 2px;
+}
+
+.phone-button {
+    width: 8px;
+    height: 8px;
+    background: #333;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 4px;
+}
+
+#puppet-comm-hub {
+    transition: transform var(--transition-fast);
+}
+
+#puppet-container {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all var(--transition-fast);
+}

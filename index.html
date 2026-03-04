@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Interactiva | Análisis Estadístico</title>
+    <!-- Google Fonts - Modern Typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/utilities.css">
+    <link rel="stylesheet" href="Barrarita_LI/css/notification.css">
+    
+    <!-- Module Specific CSS -->
+    <link rel="stylesheet" href="Barrarita_Su/css/sponsored.css">
+    <link rel="stylesheet" href="Barrarita_LI/css/sidebar-left.css">
+    <link rel="stylesheet" href="Barrarita_LD/css/sidebar-right.css">
+    <link rel="stylesheet" href="Proyectos%20grandes/Dinnerbone%20y%20secretos%20n.n/css/dinnerbone.css">
+    <link rel="stylesheet" href="Calculo/Resultados/css/results.css">
+    <link rel="stylesheet" href="Calculo/Operaciones%20con%20Conjuntos/css/sets.css">
+    <link rel="stylesheet" href="Calculo/Diagrama%20de%20Árbol%20Visual/css/tree.css">
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- ==================== SPLASH SCREEN (LOGO INICIAL) ==================== -->
+    <div id="splash-screen" class="splash-container">
+        <div class="splash-content">
+            <img src="Proyectos%20grandes/Dinnerbone%20y%20secretos%20n.n/IMAGENES/SF.jpeg" alt="Logo SF" class="splash-logo">
+        </div>
+    </div>
+
+    <!-- ==================== SPONSORED CONTENT SECTION ==================== -->
+    <section id="sponsored-section" class="sponsored-container">
+        <div class="sponsored-header">
+            <h3 class="sponsored-title">Contenido Patrocinado por nuestros colaboradores</h3>
+            <button id="start-guide-btn" class="btn-primary btn-small" style="background-color: var(--color-secondary); color: #1a1a2e; font-weight: bold;">📖 Guía Rápida</button>
+        </div>
+        <div id="top-gallery" class="sponsored-gallery">
+            <a href="https://youtu.be/Qi0TcmU6ULY" target="_blank" class="sponsored-item" title="Ver video 1">
+                <div class="sponsored-icon">🎬</div>
+                <span>Contenido extra 1</span>
+            </a>
+            <a href="https://youtu.be/q4rpn_TT-Hc" target="_blank" class="sponsored-item" title="Ver video 2">
+                <div class="sponsored-icon">🎬</div>
+                <span>Contenido extra 2</span>
+            </a>
+            <a href="https://youtu.be/nQ2ItSEEas4" target="_blank" class="sponsored-item" title="Ver video 3">
+                <div class="sponsored-icon">🎬</div>
+                <span>Contenido extra 3</span>
+            </a>
+            <a href="https://youtu.be/GSsBAXRxo_o" target="_blank" class="sponsored-item" title="Ver video 4">
+                <div class="sponsored-icon">🎬</div>
+                <span>Contenido extra 4</span>
+            </a>
+        </div>
+        <p class="sponsored-intent">
+            Este apartado ha sido diseñado para ofrecerte acceso a contenido variado de nuestros colaboradores. Te invitamos a explorar estos recursos externos adicionales que han sido seleccionados para enriquecer tu experiencia en la plataforma.
+        </p>
+    </section>
+
+    <!-- ==================== HERO SECTION ==================== -->
+    <header id="main-title-area" class="hero-section">
+        <h1 class="main-page-title">Análisis Estadístico Interactivo</h1>
+        <h2 class="main-subtitle">Herramientas Interactivas para Probabilidad y Estadística</h2>
+    </header>
+
+    <hr class="section-divider">
+
+    <p id="intro-paragraph" class="intro-text">
+        Esta aplicación interactiva te permite explorar y visualizar conceptos fundamentales de estadística y probabilidad.
+        Desde el análisis de datos descriptivos hasta operaciones con conjuntos y cálculos de probabilidad,
+        aquí puedes experimentar con tus propios números o generar datos aleatorios para obtener insights inmediatos.
+    </p>
+
+    <!-- ==================== CTA SECTION ==================== -->
+    <div class="cta-container">
+        <button id="start-exploring-btn" class="btn-primary btn-large">
+            ¡Comenzar a Explorar!
+        </button>
+    </div>
+
+    <!-- ==================== SIDEBARS & CONTENT ==================== -->
+    
+    <!-- Left Sidebar - Actions (Implementation 1.02 Restructured) -->
+    <nav id="sidebar" class="sidebar sidebar-left" role="navigation" aria-label="Acciones y Personalización">
+        <div class="sidebar-header">
+            <h4>Acciones</h4>
+        </div>
+        <div class="sidebar-content">
+            <ul class="action-buttons-list">
+                <li><button id="open-settings-btn" class="side-action-btn" title="Configuración de Pantalla y Audio">⚙️ Pantalla y Audio</button></li>
+                <li><button id="open-achievements-btn" class="side-action-btn" title="Ver Logros y Desafíos">🏆 Logros</button></li>
+                <li><button id="global-clear-btn" class="side-action-btn" title="Limpiar todos los datos">🗑️ Limpiar Todo</button></li>
+                <li><button id="global-random-btn" class="side-action-btn" title="Generar datos aleatorios en todo">🎲 Aleatorio Total</button></li>
+            </ul>
+
+            <div id="random-control-sidebar" class="sidebar-control">
+                <label for="random-count-slider">Cantidad Aleatoria: <span id="slider-value">20</span></label>
+                <input type="range" id="random-count-slider" min="5" max="200" value="20">
+            </div>
+        </div>
+    </nav>
+
+    <!-- Screen Settings Modal -->
+    <div id="settings-modal" class="dinnerbone-modal hidden">
+        <div class="dinnerbone-modal-content" style="max-width: 450px; width: 90%; background: var(--color-bg-card); padding: 30px; border-radius: 20px; border: 2px solid var(--color-primary); box-shadow: 0 0 40px rgba(0,0,0,0.8);">
+            <h3 style="color: var(--color-primary); margin-top: 0; text-align: center; border-bottom: 1px solid var(--color-border); padding-bottom: 15px;">⚙️ Configuración de Pantalla</h3>
+            
+            <div class="settings-grid" style="display: grid; gap: 20px; margin-top: 20px;">
+                <!-- Audio Section -->
+                <div class="setting-item">
+                    <label style="display: block; margin-bottom: 8px; font-weight: bold; font-size: 0.9em; color: var(--color-secondary);">SISTEMA DE AUDIO</label>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                        <button id="mute-audio-btn" class="side-action-btn">🔊 Audio: Activado</button>
+                        <button id="toggle-music-btn" class="side-action-btn">🎵 Música: ON</button>
+                    </div>
+                </div>
+
+                <!-- Theme & Environment -->
+                <div class="setting-item">
+                    <label style="display: block; margin-bottom: 8px; font-weight: bold; font-size: 0.9em; color: var(--color-secondary);">APARIENCIA VISUAL</label>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                        <button id="theme-switcher-btn" class="side-action-btn">🎨 Cambiar Tema</button>
+                        <button id="toggle-bg-btn" class="side-action-btn">🖼️ Ambiente</button>
+                    </div>
+                </div>
+
+                <!-- Background Selector (Hidden by default) -->
+                <div id="bg-selector-container" class="sidebar-control hidden" style="margin-top: 0; background: rgba(0,0,0,0.2); padding: 15px; border-radius: 10px;">
+                    <label for="bg-selector">Selecciona Fondo:</label>
+                    <select id="bg-selector" class="select-input" style="margin-bottom: 10px;">
+                        <option value="none">Por defecto</option>
+                        <option value="Barrarita_LI/IMAGENES/playa.jpg">Eco del Océano</option>
+                        <option value="Barrarita_LI/IMAGENES/fut.jpg">Gloria Deportiva</option>
+                        <option value="Barrarita_LI/IMAGENES/ciudad.jpg">Vértigo Urbano</option>
+                        <option value="Barrarita_LI/IMAGENES/costa.jpg">Brisa Serrana</option>
+                        <option value="Barrarita_LI/IMAGENES/gato.jpg">Susurro Felino</option>
+                        <option value="Barrarita_LI/IMAGENES/girl.jpg">Mirada Profunda</option>
+                        <option value="Barrarita_LI/IMAGENES/montaña.jpg">Cumbre Blanca</option>
+                        <option value="Barrarita_LI/IMAGENES/mundo.jpg">Esfera Terrestre</option>
+                        <option value="Barrarita_LI/IMAGENES/nuves.jpg">Algodón de Azúcar</option>
+                        <option value="Barrarita_LI/IMAGENES/tren.jpg">Rieles del Tiempo</option>
+                    </select>
+                    <button id="apply-bg-btn" class="btn-primary btn-small" style="width: 100%;">Aplicar Cambios</button>
+                </div>
+
+                <!-- Font Color -->
+                <div class="setting-item">
+                    <label for="font-color-slider" style="display: block; margin-bottom: 8px; font-weight: bold; font-size: 0.9em; color: var(--color-secondary);">TONO DE LETRA PERSONALIZADO</label>
+                    <input type="range" id="font-color-slider" min="0" max="360" value="0" style="width: 100%;">
+                    <button id="cipher-mode-btn" class="btn-small hidden" style="width: 100%; margin-top: 10px; font-size: 0.8em; background: #444;">👁️ Activar Modo Cipher</button>
+                </div>
+
+                <!-- Special Actions -->
+                <div class="setting-item" style="border-top: 1px solid var(--color-border); padding-top: 15px;">
+                    <label style="display: block; margin-bottom: 8px; font-weight: bold; font-size: 0.9em; color: var(--color-danger);">ZONA EXPERIMENTAL</label>
+                    <button id="dinnerbone-btn" class="side-action-btn" title="¡De cabeza!">🙃 Modo Dinnerbone</button>
+                </div>
+            </div>
+
+            <button id="close-settings-btn" class="btn-primary" style="width: 100%; margin-top: 30px; padding: 12px;">Guardar y Cerrar</button>
+        </div>
+    </div>
+
+    <!-- Achievements Modal -->
+    <div id="achievements-modal" class="dinnerbone-modal hidden">
+        <div class="dinnerbone-modal-content" style="max-width: 600px; width: 95%; background: var(--color-bg-card); padding: 30px; border-radius: 20px; border: 2px solid var(--color-primary); box-shadow: 0 0 40px rgba(0,0,0,0.8); max-height: 80vh; overflow-y: auto;">
+            <h3 style="color: var(--color-primary); margin-top: 0; text-align: center; border-bottom: 1px solid var(--color-border); padding-bottom: 15px;">🏆 Logros y Desafíos</h3>
+            
+            <div id="achievements-container" style="display: flex; flex-direction: column; gap: 15px; margin-top: 20px;">
+                <!-- Achievements will be injected here by JS -->
+            </div>
+
+            <button id="close-achievements-btn" class="btn-primary" style="width: 100%; margin-top: 30px; padding: 12px;">Cerrar</button>
+        </div>
+    </div>
+
+    <!-- Interactive Puppet & Communication Hub -->
+    <div id="puppet-comm-hub" style="position: fixed; bottom: 30px; right: 100px; z-index: 10004; display: flex; flex-direction: column; align-items: center; gap: 15px;">
+        <!-- Secret Easter Egg Button (Chaos) moved here -->
+        <button id="secret-trigger-btn" class="secret-button" title="Botón secreto" style="position: static; transform: none; box-shadow: 0 0 15px var(--color-primary);">?</button>
+        
+        <div style="position: relative;">
+            <div id="puppet-speech-bubble" class="speech-bubble hidden"></div>
+            <div id="puppet-phone" class="puppet-phone">
+                <div class="phone-screen"></div>
+                <div class="phone-speaker"></div>
+                <div class="phone-button"></div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="puppet-container" class="puppet-character puppet-normal">
+        <img id="puppet-image" src="Proyectos%20grandes/Dinnerbone%20y%20secretos%20n.n/IMAGENES/Fn31.webp" alt="Mascota Interactiva - Puppet" style="width: 100%; height: auto;">
+    </div>
+
+    <!-- Dinnerbone Modal - Shows Image Centered with Button to Return -->
+    <div id="dinnerbone-modal" class="dinnerbone-modal hidden">
+        <div class="dinnerbone-modal-content" style="display: flex; flex-direction: column; align-items: center; gap: 20px;">
+            <button id="secret-trigger-in-modal" class="secret-button secret-button-modal" title="Botón secreto">?</button>
+            <img class="dinnerbone-puppet-center" src="Proyectos%20grandes/Dinnerbone%20y%20secretos%20n.n/IMAGENES/Fn31.webp" alt="Puppet de Cabeza" style="width: 200px; filter: drop-shadow(0 0 20px var(--color-primary));">
+            <div class="secret-code-container" style="text-align: center; color: var(--color-primary); padding: 20px 40px; background: rgba(0,0,0,0.7); border-radius: 20px; border: 2px solid var(--color-primary); box-shadow: 0 0 30px var(--color-primary); backdrop-filter: blur(10px);">
+                <p style="font-size: 0.8em; opacity: 0.8; letter-spacing: 2px; margin: 0;">PROTOCOLO DETECTADO:</p>
+                <h2 style="font-size: 2.5em; margin: 5px 0; font-family: monospace; letter-spacing: 5px;">PUPPET-101</h2>
+                <p style="font-size: 0.7em; margin-top: 10px;">Introduce el código en Datos para iniciar el Desafío 19.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content Wrapper -->
+    <div class="content-wrapper">
+        <main role="main">
+            <!-- ==================== DATA INPUT SECTION ==================== -->
+            <section id="data-input" class="module-section">
+                <h2>Datos</h2>
+                <div class="module-controls">
+                    <textarea id="manual-data" class="textarea-input" placeholder="Introduce tus datos numéricos separados por comas (ej: 1, 2, 3, 4)" rows="5"></textarea>
+                    <div class="button-group">
+                        <button id="generate-random-btn" class="btn-secondary">Generar Datos Aleatorios</button>
+                        <button id="calculate-btn" class="btn-primary">Calcular</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ==================== RESULTS SECTION ==================== -->
+            <section id="results" class="module-section">
+                <h2>Resultados</h2>
+                <div class="results-grid">
+                    <div class="results-summary">
+                        <div id="statistics-results"></div>
+                        <div id="frequency-table-results"></div>
+                    </div>
+                    <div id="charts-container" class="charts-grid">
+                        <h3>Gráficos:</h3>
+                        <div class="chart-wrapper"><canvas id="histogramChart"></canvas></div>
+                        <div class="chart-wrapper"><canvas id="frequencyPolygonChart"></canvas></div>
+                        <div class="chart-wrapper"><canvas id="ogiveChart"></canvas></div>
+                        <div class="chart-wrapper"><canvas id="paretoChart"></canvas></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ==================== SET OPERATIONS SECTION ==================== -->
+            <section id="set-operations-section" class="module-section">
+                <h2>Operaciones con Conjuntos</h2>
+                <div class="set-grid-container">
+                    <div class="input-group">
+                        <label for="universal-set-input">Conjunto Universal:</label>
+                        <textarea id="universal-set-input" class="textarea-input compact-textarea" rows="1" placeholder="Auto-generado"></textarea>
+                    </div>
+                    <div class="input-group">
+                        <label for="setA-input">Conjunto A:</label>
+                        <textarea id="setA-input" class="textarea-input compact-textarea" rows="1" placeholder="ej: 1, 2, 3"></textarea>
+                    </div>
+                    <div class="input-group">
+                        <label for="setB-input">Conjunto B:</label>
+                        <textarea id="setB-input" class="textarea-input compact-textarea" rows="1" placeholder="ej: 3, 4, 5"></textarea>
+                    </div>
+                    <div class="input-group">
+                        <label for="setC-input">Conjunto C:</label>
+                        <textarea id="setC-input" class="textarea-input compact-textarea" rows="1" placeholder="ej: 5, 6, 7"></textarea>
+                    </div>
+                </div>
+
+                <div class="set-operation-panel">
+                    <div class="op-group">
+                        <span class="op-label">A y B:</span>
+                        <div class="button-row">
+                            <button id="union-btn" class="btn-mini">∪</button>
+                            <button id="intersection-btn" class="btn-mini">∩</button>
+                            <button id="difference-ab-btn" class="btn-mini">A-B</button>
+                            <button id="difference-ba-btn" class="btn-mini">B-A</button>
+                            <button id="complement-a-btn" class="btn-mini">A'</button>
+                            <button id="complement-b-btn" class="btn-mini">B'</button>
+                        </div>
+                    </div>
+
+                    <div class="op-group">
+                        <span class="op-label">Con C:</span>
+                        <div class="button-row">
+                            <button id="union-ac-btn" class="btn-mini">A∪C</button>
+                            <button id="intersection-ac-btn" class="btn-mini">A∩C</button>
+                            <button id="difference-ac-btn" class="btn-mini">A-C</button>
+                            <button id="difference-ca-btn" class="btn-mini">C-A</button>
+                            <button id="union-bc-btn" class="btn-mini">B∪C</button>
+                            <button id="intersection-bc-btn" class="btn-mini">B∩C</button>
+                            <button id="difference-bc-btn" class="btn-mini">B-C</button>
+                            <button id="difference-cb-btn" class="btn-mini">C-B</button>
+                            <button id="complement-c-btn" class="btn-mini">C'</button>
+                        </div>
+                    </div>
+
+                    <div class="op-group main-actions">
+                        <button id="union-abc-btn" class="btn-mini btn-compact">A∪B∪C</button>
+                        <button id="intersection-abc-btn" class="btn-mini btn-compact">A∩B∩C</button>
+                        <button id="calculate-all-sets-btn" class="btn-primary btn-compact">Calcular Todo</button>
+                        <button id="clear-set-operations-btn" class="btn-danger btn-compact">Limpiar</button>
+                    </div>
+                </div>
+                <div id="set-operations-results"></div>
+            </section>
+
+            <!-- ==================== PROBABILITY SECTIONS ==================== -->
+            <section id="probability-section" class="module-section">
+                <h2>Cálculo de Probabilidad Simple</h2>
+                <div class="module-controls">
+                    <div class="input-group">
+                        <label for="affected-value-input">Valor Afectado:</label>
+                        <input type="number" id="affected-value-input" class="number-input" placeholder="ej: 5">
+                    </div>
+                    <div class="input-group">
+                        <label for="total-value-input">Valor Total:</label>
+                        <input type="number" id="total-value-input" class="number-input" placeholder="ej: 10">
+                    </div>
+                    <button id="calculate-probability-btn" class="btn-primary">Calcular Probabilidad</button>
+                </div>
+                <div id="probability-results"></div>
+            </section>
+
+            <section id="sequential-probability-section" class="module-section">
+                <h2>Probabilidad Secuencial</h2>
+                <div class="module-controls">
+                    <div class="input-group">
+                        <label for="independent-probabilities-input">Probabilidades (ej: 50, 20, 80):</label>
+                        <textarea id="independent-probabilities-input" class="textarea-input" rows="2" placeholder="ej: 50, 20, 80"></textarea>
+                    </div>
+                    <button id="calculate-sequential-prob-btn" class="btn-primary">Calcular</button>
+                </div>
+                <div id="sequential-probability-results"></div>
+            </section>
+
+            <!-- ==================== PERMUTATIONS & COMBINATIONS SECTION ==================== -->
+            <section id="permutations-combinations-section" class="module-section">
+                <h2>Permutaciones y Combinaciones</h2>
+                <div class="module-controls">
+                    <div class="input-group">
+                        <label for="n-input">n (Total):</label>
+                        <input type="number" id="n-input" class="number-input" min="0" placeholder="ej: 10">
+                    </div>
+                    <div class="input-group">
+                        <label for="r-input">r (Elección):</label>
+                        <input type="number" id="r-input" class="number-input" min="0" placeholder="ej: 3">
+                    </div>
+                    <div class="button-group">
+                        <button id="calculate-permutations-btn" class="btn-secondary">nPr</button>
+                        <button id="calculate-combinations-btn" class="btn-secondary">nCr</button>
+                    </div>
+                </div>
+                <div id="permutations-combinations-results"></div>
+            </section>
+
+            <!-- ==================== TREE DIAGRAM SECTION ==================== -->
+            <section id="tree-diagram-section" class="module-section">
+                <h2>Diagrama de Árbol Visual</h2>
+                <div class="module-controls">
+                    <div class="input-group">
+                        <label for="prob-a-input">P(A):</label>
+                        <input type="number" id="prob-a-input" class="number-input" step="0.01" min="0" max="1" value="0.5">
+                    </div>
+                    <div class="input-group">
+                        <label for="prob-b-given-a-input">P(B|A):</label>
+                        <input type="number" id="prob-b-given-a-input" class="number-input" step="0.01" min="0" max="1" value="0.7">
+                    </div>
+                    <div class="input-group">
+                        <label for="prob-b-given-not-a-input">P(B|A'):</label>
+                        <input type="number" id="prob-b-given-not-a-input" class="number-input" step="0.01" min="0" max="1" value="0.3">
+                    </div>
+                    <button id="generate-tree-diagram-btn" class="btn-primary">Generar Diagrama</button>
+                </div>
+                <div id="tree-diagram-container"></div>
+            </section>
+        </main>
+        
+        <!-- ==================== FOOTER / LEGAL SECTION ==================== -->
+        <footer id="main-footer" class="footer-section">
+            <div class="footer-container">
+                <div class="footer-column">
+                    <h4>Identidad</h4>
+                    <div class="footer-logo-small">
+                        <img src="Proyectos%20grandes/Dinnerbone%20y%20secretos%20n.n/IMAGENES/SF.jpeg" alt="Logo SF">
+                        <div class="footer-credits">
+                            <span class="creator-name">SF Project</span>
+                            <span class="collaborator-name">Colaborador: The obligatory unknown</span>
+                        </div>
+                    </div>
+                    <p class="footer-description">
+                        Herramienta interactiva diseñada para la exploración avanzada de conceptos estadísticos y probabilísticos.
+                    </p>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Legal</h4>
+                    <ul class="footer-links">
+                        <li><a href="#footer-legal" onclick="return false;">Términos de Uso</a></li>
+                        <li><a href="#footer-legal" onclick="return false;">Política de Privacidad</a></li>
+                        <li><a href="#footer-legal" onclick="return false;">Exención de Responsabilidad</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Privacidad de Datos</h4>
+                    <p class="footer-text">
+                        Esta aplicación opera bajo un modelo de <strong>procesamiento local</strong>. Ningún dato introducido o generado es enviado a servidores externos ni almacenado fuera de tu navegador.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 SF Project - Análisis Estadístico. Todos los derechos reservados.</p>
+                <p class="footer-version">Implementación C-17.22/22 - Ajuste de Cronómetro</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Mobile Navigation Toggles -->
+    <div class="mobile-nav-toggles">
+        <button id="mobile-left-toggle" class="mobile-toggle-btn" title="Menú de Acciones">☰</button>
+        <button id="mobile-right-toggle" class="mobile-toggle-btn" title="Menú de Navegación">📍</button>
+    </div>
+
+    <!-- Right Sidebar - Navigation & Dinnerbone -->
+    <nav id="right-sidebar" class="sidebar sidebar-right" role="navigation" aria-label="Navegación y Dinnerbone">
+        <div class="sidebar-header">
+            <h4>Navegación</h4>
+        </div>
+        <div class="sidebar-content">
+            <ul class="nav-links-list">
+                <li><a href="#data-input" class="side-link">Datos</a></li>
+                <li><a href="#results" class="side-link">Resultados</a></li>
+                <li><a href="#set-operations-section" class="side-link">Conjuntos</a></li>
+                <li><a href="#probability-section" class="side-link">Prob. Simple</a></li>
+                <li><a href="#sequential-probability-section" class="side-link">Prob. Secuencial</a></li>
+                <li><a href="#permutations-combinations-section" class="side-link">Perm./Comb.</a></li>
+                <li><a href="#tree-diagram-section" class="side-link">Diagrama Árbol</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Notification Toast Container -->
+    <div id="notification-toast" class="toast"></div>
+
+    <!-- Master Reset Button (End of Program) -->
+    <div style="text-align: center; margin: 40px 0; opacity: 0.3; transition: opacity 0.3s;" onmouseenter="this.style.opacity='1'" onmouseleave="this.style.opacity='0.3'">
+        <button id="master-reset-btn" class="btn-danger btn-small" style="background-color: #444; border: 1px solid #666; font-size: 0.6em; padding: 5px 10px;">Sistema: Reinicio Maestro</button>
+    </div>
+
+    <!-- Scripts -->
+    <script type="module" src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,124 @@
+/* ============================================================
+   SIDEBAR LEFT - ACTIONS & STYLE
+   ============================================================ */
+
+/* From layout.css */
+.sidebar {
+    width: var(--sidebar-width);
+    flex-shrink: 0;
+    background-color: rgba(26, 26, 46, 0.92); /* Más opaco */
+    backdrop-filter: blur(10px); /* Cristal esmerilado */
+    -webkit-backdrop-filter: blur(10px);
+    padding: var(--spacing-lg) var(--spacing-md);
+    box-shadow: var(--shadow-md);
+    position: fixed;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+    z-index: var(--z-sidebar);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all var(--transition-fast);
+}
+
+.sidebar-left {
+    left: var(--sidebar-hidden);
+    border-right: 1px solid var(--color-border);
+}
+
+.sidebar-left:hover {
+    left: var(--sidebar-visible);
+}
+
+.sidebar-header {
+    text-align: center;
+    color: var(--color-accent-warm);
+    margin-bottom: var(--spacing-lg);
+    border-bottom: 3px solid var(--color-accent-warm-light);
+    padding-bottom: var(--spacing-md);
+}
+
+.sidebar-header h4 {
+    margin: 0;
+    font-size: var(--font-size-md);
+}
+
+.sidebar-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+/* From components.css */
+.side-action-btn {
+    width: 100%;
+    padding: var(--spacing-md) var(--spacing-sm);
+    background-color: #3f3f5a;
+    color: var(--color-text-primary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-sm);
+    text-align: center;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.side-action-btn:hover {
+    background-color: var(--color-primary);
+    color: white;
+    box-shadow: 0 2px 6px rgba(138, 43, 226, 0.2);
+    border-color: var(--color-primary);
+}
+
+#global-clear-btn:hover {
+    background-color: var(--color-danger);
+    border-color: var(--color-danger);
+    box-shadow: 0 2px 6px rgba(231, 76, 60, 0.2);
+}
+
+.action-buttons-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.action-buttons-list li {
+    width: 100%;
+}
+
+.sidebar-control {
+    margin-top: var(--spacing-lg);
+    padding: var(--spacing-md);
+    background-color: rgba(255, 255, 255, 0.03);
+    border-radius: var(--radius-md);
+}
+
+.sidebar-control label {
+    font-size: var(--font-size-sm);
+    color: var(--color-primary);
+    font-weight: bold;
+    display: block;
+    margin-bottom: var(--spacing-sm);
+}
+
+/* Puppet specific - linked to sidebars */
+.puppet-character {
+    position: fixed;
+    bottom: -15px;
+    width: var(--puppet-width);
+    height: auto;
+    z-index: var(--z-puppet);
+    filter: drop-shadow(var(--shadow-glow));
+    display: block !important;
+    transition: opacity var(--transition-fast);
+    cursor: pointer;
+}
+
+.puppet-normal {
+    right: var(--puppet-hidden);
+    left: auto;
+    transition: right var(--transition-fast);
+    opacity: 1;
+}

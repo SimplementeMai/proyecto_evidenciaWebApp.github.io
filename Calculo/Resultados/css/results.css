@@ -1,0 +1,105 @@
+/* ============================================================
+   RESULTS & CHARTS
+   ============================================================ */
+
+/* Tables */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: var(--spacing-xl);
+    background-color: var(--color-bg-card);
+    color: var(--color-text-primary);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+}
+
+th, td {
+    border-bottom: 1px solid var(--color-border);
+    padding: var(--spacing-lg);
+    text-align: left;
+    font-size: var(--font-size-md);
+}
+
+th {
+    background: linear-gradient(135deg, rgba(138, 43, 226, 0.15) 0%, rgba(133, 193, 233, 0.05) 100%);
+    color: var(--color-primary);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-size: var(--font-size-sm);
+}
+
+tr:hover {
+    background-color: rgba(138, 43, 226, 0.05);
+}
+
+@media (max-width: 768px) {
+    #statistics-results, #frequency-table-results {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        margin-bottom: var(--spacing-lg);
+        display: block;
+        width: 100%;
+    }
+
+    table {
+        min-width: 500px; /* Minimum width to keep columns readable */
+    }
+
+    th, td {
+        padding: var(--spacing-sm);
+        font-size: 0.85em;
+    }
+
+    .chart-wrapper {
+        height: 250px;
+        padding: var(--spacing-sm);
+    }
+}
+
+/* Charts */
+.charts-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-2xl);
+}
+
+.chart-wrapper {
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+    height: 320px;
+    background-color: rgba(138, 43, 226, 0.02);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    box-sizing: border-box;
+}
+
+/* Results Grid */
+.results-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-xl);
+}
+
+@media (max-width: 1024px) {
+    .results-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.results-summary {
+    padding: var(--spacing-md);
+    background-color: var(--color-bg-input);
+    border-radius: var(--radius-lg);
+    min-height: 150px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+#statistics-results, #frequency-table-results {
+    min-height: 20px;
+    transition: all var(--transition-fast);
+}

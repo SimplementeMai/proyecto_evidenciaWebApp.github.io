@@ -1,0 +1,95 @@
+/* ============================================================
+   SET OPERATIONS OPTIMIZATION
+   ============================================================ */
+
+.set-grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+}
+
+.compact-textarea {
+    min-height: 40px !important;
+    padding: var(--spacing-xs) var(--spacing-sm) !important;
+    font-size: 0.9em !important;
+}
+
+.set-operation-panel {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.op-group {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    padding: var(--spacing-xs) 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.op-group:last-child {
+    border-bottom: none;
+}
+
+.op-label {
+    font-size: 0.85em;
+    font-weight: 600;
+    color: var(--color-text-secondary);
+    min-width: 60px;
+}
+
+.button-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-xs);
+}
+
+.btn-mini {
+    padding: 4px 8px;
+    font-size: 0.8em;
+    min-width: 35px;
+    height: 28px;
+    border-radius: var(--radius-sm);
+    background: var(--color-bg-input);
+    color: var(--color-text-primary);
+    border: 1px solid var(--color-border);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.btn-mini:hover {
+    background: var(--color-primary);
+    border-color: var(--color-primary-light);
+}
+
+.btn-compact {
+    padding: var(--spacing-xs) var(--spacing-md);
+    font-size: 0.9em;
+}
+
+.main-actions {
+    justify-content: center;
+    margin-top: var(--spacing-sm);
+}
+
+#set-operations-results {
+    min-height: 20px;
+    transition: all var(--transition-fast);
+}
+
+@media (max-width: 600px) {
+    .set-grid-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .op-group {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}

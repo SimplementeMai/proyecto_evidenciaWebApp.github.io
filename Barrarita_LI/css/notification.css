@@ -1,0 +1,72 @@
+/* ============================================================
+   NOTIFICATION TOAST COMPONENT (Ubicación: assets/notificacion)
+   ============================================================
+   Estilos mejorados para el sistema de notificaciones.
+   ============================================================ */
+
+.toast {
+    position: fixed;
+    top: 30px; /* Movido a la parte superior para ser más visible */
+    left: 50%;
+    transform: translateX(-50%) translateY(-100px); /* Empieza fuera por arriba */
+    background: rgba(44, 44, 71, 0.95);
+    backdrop-filter: blur(10px);
+    color: var(--color-text-primary);
+    padding: 18px 32px;
+    border-radius: var(--radius-lg);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+    font-size: var(--font-size-md);
+    z-index: 10002;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    min-width: 320px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    border: 1px solid rgba(138, 43, 226, 0.3);
+    border-left: 5px solid var(--color-primary); /* Acento lateral */
+}
+
+.toast.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* Tipos de notificaciones con colores vibrantes */
+.toast.info {
+    border-left-color: var(--color-secondary);
+}
+
+.toast.success {
+    border-left-color: var(--color-success);
+}
+
+.toast.error {
+    border-left-color: var(--color-danger);
+}
+
+.toast.warning {
+    border-left-color: var(--color-warning);
+}
+
+.toast-icon {
+    font-size: 1.4em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Animación de entrada extra */
+@keyframes toast-pop {
+    0% { transform: translateX(-50%) scale(0.9); }
+    50% { transform: translateX(-50%) scale(1.05); }
+    100% { transform: translateX(-50%) scale(1); }
+}
+
+.toast.show {
+    animation: toast-pop 0.4s ease-out forwards;
+}
